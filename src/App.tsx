@@ -1,88 +1,33 @@
-// src/App.tsx
 import { TaskProvider } from "./context/TaskContext";
-import {AddTaskForm} from "./components/AddTaskForm";
+import { AddTaskForm } from "./components/AddTaskForm";
 import { TaskList } from "./components/TaskList";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { useTheme } from "./hooks/useTheme";
+import "./styles/animations.css";
 
 function App() {
   const { dark, toggleTheme } = useTheme();
 
   return (
     <TaskProvider>
-      <style>{`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        
-        .animate-slideIn {
-          animation: slideIn 0.3s ease-out;
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.2s ease-out;
-        }
-        
-        .dark {
-          color-scheme: dark;
-        }
-        
-        .task-item {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .task-item:hover {
-          transform: translateY(-2px);
-        }
-        
-        @media (max-width: 640px) {
-          .task-item {
-            font-size: 14px;
-          }
-          
-          .drag-handle {
-            font-size: 16px;
-          }
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-          .task-item,
-          .animate-slideIn,
-          .animate-fadeIn,
-          * {
-            animation-duration: 0.01ms !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
-      `}</style>
       <div
         className={`min-h-screen p-4 sm:p-6 md:p-8 transition-colors duration-500 ${
-          dark ? "dark bg-gray-900 text-gray-100" : "bg-gradient-to-br from-blue-50 to-purple-50 text-gray-900"
+          dark 
+            ? "dark bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-gray-100" 
+            : "bg-gradient-to-br from-blue-50 via-white to-slate-50 text-gray-900"
         }`}
       >
-        <div className="max-w-xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 
-                       bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent
-                       animate-slideIn">
-            TrackMate
-          </h1>
-          <ThemeToggle dark={dark} toggleTheme={toggleTheme} />
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between mb-6 sm:mb-8 gap-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold 
+                         bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent
+                         animate-slideIn">
+              TrackMate
+            </h1>
+            <div className="flex-shrink-0">
+              <ThemeToggle dark={dark} toggleTheme={toggleTheme} />
+            </div>
+          </div>
           <AddTaskForm />
           <TaskList />
         </div>
@@ -90,7 +35,5 @@ function App() {
     </TaskProvider>
   );
 }
-
-
 
 export default App;
