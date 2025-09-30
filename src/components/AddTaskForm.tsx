@@ -52,9 +52,9 @@ export const AddTaskForm = memo(() => {
           />
           <button
             onClick={handleAddTask}
-            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg
+            className={`px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg
                      font-semibold transition-all duration-200 transform hover:scale-105
-                     active:scale-95 shadow-md hover:shadow-lg"
+                     active:scale-95 shadow-md hover:shadow-lg`}
           >
             Add Task
           </button>
