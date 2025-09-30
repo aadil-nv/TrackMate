@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# TrackMate 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TrackMate is a **Task Manager App** built with **React + TypeScript + Vite + Tailwind CSS**.  
+It helps you organize tasks, mark them as complete, filter them, and persist them using **localStorage**.  
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Add, complete, and delete tasks  
+- 🔍 Filter tasks (All, Completed, Pending)  
+- 💾 Persistent storage using localStorage  
+- 🎨 Dark / Light mode toggle with Tailwind  
+- ⚡ Optimized with React features (`useMemo`, `useCallback`, `React.memo`)  
+- 🎬 Smooth CSS transitions for adding/removing tasks  
+- 📱 Responsive (mobile-first)  
+- 🖱️ Drag-and-drop support (via `react-beautiful-dnd`, optional)  
 
-## React Compiler
+---
+## 🚀 Hosted Link :https://track-mate-rust.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Installation & Setup
 
-## Expanding the ESLint configuration
+Clone the repo and install dependencies:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+git clone https://github.com/aadil-nv/TrackMate.git
+cd trackmate
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+-----------------------
+## Run the app
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 Folder Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+trackmate/
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.ts
+├── postcss.config.js
+├── README.md
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+📂 src/
+│
+├── main.tsx
+├── App.tsx
+│
+├── hooks/
+│   ├── useTheme.ts
+│   └── useLocalStorage.ts
+│
+├── context/
+│   └── TaskContext.tsx
+│
+├── components/
+│   ├── AddTaskForm.tsx
+│   ├── TaskItem.tsx
+│   ├── TaskList.tsx
+│   ├── ThemeToggle.tsx
+│   ├── Pagination.tsx
+│   ├── Alert.tsx
+│   └── Toast.tsx
+│
+├── utils/
+│   └── dateTimeFormat.ts
+│
+├── styles/
+│   ├── index.css      // Tailwind imports + base styles
+│   ├── animation.css  // Task enter/exit animations
+│   └── theme.css      // Light/Dark theme overrides
+│
+└── types/
+    └── task.ts        // TypeScript interfaces (Task, Filters, etc.)
